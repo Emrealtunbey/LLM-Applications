@@ -3,6 +3,10 @@
 .env.*
 *.env
 
+.docx
+.docx.*
+*.docx
+
 # Node
 node_modules/
 
