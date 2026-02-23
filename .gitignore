@@ -7,6 +7,10 @@
 .docx.*
 *.docx
 
+.txt
+.txt.*
+*.txt
+
 # Node
 node_modules/
 
