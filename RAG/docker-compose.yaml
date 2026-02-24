@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - ollama
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama_rag
+    ports:
+      - "11434:11434"
+    volumes:
+      - C:/Users/Emre/.ollama:/root/.ollama
+    environment:
+      - OLLAMA_CONTEXT_LENGTH=2048
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
